@@ -7,6 +7,7 @@ ENV USER_DATABASE mongodb
 COPY . ${sourcesdir}
 RUN apk update
 RUN apk add git
+RUN git config --global http.sslverify false
 RUN go get -v github.com/Masterminds/glide && cd ${sourcesdir} && glide install && go install
 
 ENTRYPOINT user
